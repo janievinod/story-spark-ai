@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, LineChart, Line, CartesianGrid,
+  PieChart, Pie, Cell, CartesianGrid,
 } from "recharts";
 
 const API_BASE = import.meta.env.VITE_BASE_URL || "http://localhost:5000/api/v1";
@@ -43,6 +43,7 @@ export default function AnalyticsDashboard() {
     return data.data;
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const load = async () => {
       try {
