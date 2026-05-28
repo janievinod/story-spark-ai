@@ -18,6 +18,7 @@ import { NewsletterRouter } from "../app/modules/newsletter/newsletter.route";
 import { BookmarkRouter } from "../app/modules/bookmark/bookmark.router";
 import { StoryVersionRouter } from "../app/modules/story_version/story_version.router";
 import { AnalyticsRouter } from "../app/modules/analytics/analytics.router";
+import { WriterApplicationRoutes } from "../app/modules/writer_application/writer_application.route";
 
 const router = express.Router();
 
@@ -93,6 +94,10 @@ const modules = [
   {
     path: "/reports",
     router: ReportRouter,
+  },
+  {
+    path: "/writer-applications",
+    router: WriterApplicationRoutes,
   },
 ];
 modules.forEach((route) => router.use(route.path, route.router));
