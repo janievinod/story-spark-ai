@@ -83,7 +83,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <><HeroSectionComponent /><HomeComponent /></> },
       { path: "templates", element: <TemplatesComponent /> },
-      { path: "writing-assistant", element: <WritingAssistantComponent /> },
+      { path: "writing-assistant", element: <ProtectedRoute allowedRoles={ALL_ROLES} element={<WritingAssistantComponent />} />, },
       { path: "story-inspiration", element: <StoryInspirationWrapper /> },
       { path: "stories", element: <StoriesComponent /> },
       { path: "story-workspace", element: <StoryWorkspace /> },
