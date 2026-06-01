@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
+import { LucideIcon } from "lucide-react";
 import {
   Handshake,
   Sparkles,
-  Smile,
-  Ban,
   Lightbulb,
   FileText,
   ArrowLeft,
@@ -14,7 +13,6 @@ import {
   Bug,
   HeartHandshake,
 } from "lucide-react";
-import { LucideIcon } from "lucide-react";
 
 type GuidelineSection = {
   title: string;
@@ -125,7 +123,6 @@ const workflowSteps = [
 const Guidelines = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white">
-      {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <Link
@@ -151,7 +148,6 @@ const Guidelines = () => {
         </div>
       </section>
 
-      {/* Guideline Cards */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {guidelineSections.map((section) => {
@@ -188,7 +184,6 @@ const Guidelines = () => {
         </div>
       </section>
 
-      {/* Workflow Steps */}
       <section className="max-w-3xl mx-auto px-4 pb-20">
         <div className="bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 rounded-2xl p-8 shadow-sm">
           <div className="flex items-center gap-3 mb-6">

@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import { HELP_SECTIONS } from "../help_center.utils";
 
 const HelpSidebar = () => {
-  const [activeSection, setActiveSection] = useState<string>("help-categories");
+  const [activeSection, setActiveSection] = useState<string>(
+    HELP_SECTIONS[0]?.id ?? "help-categories"
+  );
 
   useEffect(() => {
+    const sectionIds = HELP_SECTIONS.map((section) => section.id);
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleSections = entries
@@ -22,8 +26,8 @@ const HelpSidebar = () => {
       }
     );
 
-    HELP_SECTIONS.forEach((section) => {
-      const element = document.getElementById(section.id);
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
       if (element) observer.observe(element);
     });
 
@@ -36,22 +40,19 @@ const HelpSidebar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
-      HELP_SECTIONS.forEach((section) => {
-        const element = document.getElementById(section.id);
-        if (element) observer.unobserve(element);
-      });
+      observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -100;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
+    if (!element) return;
+    const yOffset = -100;
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   return (
@@ -90,9 +91,9 @@ const HelpSidebar = () => {
                     <button
                       key={section.id}
                       onClick={() => scrollToSection(section.id)}
-                      className={`relative group w-full flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 overflow-hidden border ${
+                      className={`relative group w-full flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 overflow-hidden border focus:outline-none ${
                         isActive
-                          ? "border-blue-300 dark:border-blue-500/30 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-500/15 dark:to-indigo-500/15"
+                          ? "border-blue-300 dark:border-blue-500/30 bg-gradient-to-r from-blue-500/10 to-indigo-500/10"
                           : "border-slate-200 dark:border-white/5 bg-white/50 dark:bg-white/[0.03] hover:border-blue-200 dark:hover:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.05]"
                       }`}
                     >

@@ -75,9 +75,7 @@ const NavListComponent = () => {
             <NavLink to="/" end className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-house" />
                   HOME
                 </>
@@ -87,9 +85,7 @@ const NavListComponent = () => {
             <NavLink to="/explore" className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-compass" />
                   EXPLORE
                 </>
@@ -99,9 +95,7 @@ const NavListComponent = () => {
             <NavLink to="/story-inspiration" className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-book-open" />
                   INSPIRING
                 </>
@@ -111,9 +105,7 @@ const NavListComponent = () => {
             <NavLink to="/analytics" className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-custom animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-custom animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-chart-column" />
                   ANALYTICS
                 </>
@@ -123,9 +115,7 @@ const NavListComponent = () => {
             <NavLink to="/collab" className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-custom animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-custom animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-pen-nib" />
                   COLLAB
                 </>
@@ -135,9 +125,7 @@ const NavListComponent = () => {
             <NavLink to="/contact-us" className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-envelope" />
                   CONTACT
                 </>
@@ -147,9 +135,7 @@ const NavListComponent = () => {
             <NavLink to="/community" className={({ isActive }) => getLinkClass(isActive)}>
               {({ isActive }) => (
                 <>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                  )}
+                  {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                   <i className="fa-solid fa-users" />
                   COMMUNITY
                 </>
@@ -161,9 +147,7 @@ const NavListComponent = () => {
                 <NavLink to="/bookmarks" className={({ isActive }) => getLinkClass(isActive)}>
                   {({ isActive }) => (
                     <>
-                      {isActive && (
-                        <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                      )}
+                      {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                       <i className="fa-solid fa-bookmark" />
                       SAVED
                     </>
@@ -174,9 +158,7 @@ const NavListComponent = () => {
                   <NavLink to="/dashboard" className={({ isActive }) => getLinkClass(isActive)}>
                     {({ isActive }) => (
                       <>
-                        {isActive && (
-                          <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />
-                        )}
+                        {isActive && <span className="w-1.5 h-1.5 bg-custom rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]" />}
                         <i className="fa-solid fa-table-columns" />
                         DASHBOARD
                       </>
@@ -192,7 +174,6 @@ const NavListComponent = () => {
 
             {/* Desktop Actions */}
             <div className="hidden xl:flex items-center gap-1.5">
-
               <button
                 type="button"
                 aria-label="Open Help Center"
@@ -216,7 +197,6 @@ const NavListComponent = () => {
                       LOGIN
                     </button>
                   </Link>
-
                   <Link to="/signup">
                     <button className="inline-flex h-9 items-center justify-center rounded-md px-3 text-xs font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-200/60 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white">
                       SIGN UP
@@ -236,7 +216,6 @@ const NavListComponent = () => {
                   onClick={toggle}
                 >
                   <i className="fa-solid fa-bell" />
-
                   {unreadCount > 0 && (
                     <span className="absolute right-0 top-0 grid min-h-[18px] min-w-[18px] -translate-y-1/2 translate-x-1/2 place-items-center rounded-full bg-rose-500 px-1 text-[11px] font-semibold text-white">
                       {unreadCount > 9 ? "9+" : unreadCount}
@@ -249,7 +228,6 @@ const NavListComponent = () => {
             {/* Mobile Actions */}
             <div className="flex xl:hidden items-center gap-1.5">
               <ThemeToggle />
-
               <button
                 type="button"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -274,24 +252,43 @@ const NavListComponent = () => {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="xl:hidden mt-2 px-1 pb-4 flex flex-col gap-1.5 border-t border-slate-200/70 dark:border-white/10 pt-3">
-
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) => getMobileLinkClass(isActive)}
-              onClick={() => setMenuOpen(false)}
-            >
+            <NavLink to="/" end className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
               {({ isActive }) => renderMobileNavContent("HOME", isActive)}
             </NavLink>
-
-            <NavLink
-              to="/explore"
-              className={({ isActive }) => getMobileLinkClass(isActive)}
-              onClick={() => setMenuOpen(false)}
-            >
+            <NavLink to="/explore" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
               {({ isActive }) => renderMobileNavContent("EXPLORE", isActive)}
             </NavLink>
-
+            <NavLink to="/story-inspiration" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+              {({ isActive }) => renderMobileNavContent("INSPIRING", isActive)}
+            </NavLink>
+            <NavLink to="/collab" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+              {({ isActive }) => renderMobileNavContent("COLLAB", isActive)}
+            </NavLink>
+            <NavLink to="/contact-us" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+              {({ isActive }) => renderMobileNavContent("CONTACT", isActive)}
+            </NavLink>
+            <NavLink to="/community" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+              {({ isActive }) => renderMobileNavContent("COMMUNITY", isActive)}
+            </NavLink>
+            {isLogin && (
+              <NavLink to="/bookmarks" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+                {({ isActive }) => renderMobileNavContent("SAVED", isActive)}
+              </NavLink>
+            )}
+            {isLogin ? (
+              <button onClick={handelLogout} className={getMobileLinkClass(false)}>
+                LOGOUT
+              </button>
+            ) : (
+              <>
+                <NavLink to="/login" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+                  {({ isActive }) => renderMobileNavContent("LOGIN", isActive)}
+                </NavLink>
+                <NavLink to="/signup" className={({ isActive }) => getMobileLinkClass(isActive)} onClick={() => setMenuOpen(false)}>
+                  {({ isActive }) => renderMobileNavContent("SIGN UP", isActive)}
+                </NavLink>
+              </>
+            )}
           </div>
         )}
       </div>

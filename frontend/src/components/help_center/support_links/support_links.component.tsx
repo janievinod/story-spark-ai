@@ -22,10 +22,7 @@ const SupportLinks: FC<SupportLinksProps> = ({ links }) => {
           <i className="fa-solid fa-headset"></i>
           COMMUNITY &amp; SUPPORT
         </div>
-        <h2
-          id="support-heading"
-          className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-gray-300"
-        >
+        <h2 id="support-heading" className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-gray-300">
           Support &amp; Community
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-gray-400 leading-relaxed font-medium">
@@ -46,15 +43,11 @@ const SupportLinks: FC<SupportLinksProps> = ({ links }) => {
             <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">
               <i className={`${link.icon} text-xl`} aria-hidden="true"></i>
             </div>
-
             <div className="flex-1 min-w-0">
               <h3 className="text-lg font-semibold text-slate-800 dark:text-gray-300 group-hover:text-indigo-700 dark:group-hover:text-white transition-colors flex items-center gap-2">
                 {link.title}
                 {link.external && (
-                  <i
-                    className="fas fa-external-link-alt text-xs text-slate-400 dark:text-gray-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400"
-                    aria-hidden="true"
-                  ></i>
+                  <i className="fas fa-external-link-alt text-xs text-slate-400 dark:text-gray-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400" aria-hidden="true"></i>
                 )}
               </h3>
               <p className="text-slate-600 dark:text-gray-500 text-sm mt-1 leading-relaxed">
