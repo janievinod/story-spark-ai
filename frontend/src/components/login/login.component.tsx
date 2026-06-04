@@ -12,6 +12,7 @@ import { storeUserInfo, getUserInfo } from "../../services/auth.service";
 import { USER_ROLE } from "../../constants/role";
 import RedirectComponent from "../redirect.component";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import { WandSparkles, BookOpen, UsersRound } from "lucide-react";
 
@@ -52,6 +53,7 @@ const LoginComponent = () => {
   const handleGoogleLoginSuccess = async (
     credentialResponse: CredentialResponse
   ) => {
+  const handleGoogleLoginSuccess = async (credentialResponse: CredentialResponse,) => {
     setIsBusy(true);
     try {
       const res = await googleLogin({
@@ -204,11 +206,17 @@ const LoginComponent = () => {
             <div className="relative flex justify-center text-sm w-full">
               <span className="px-4 bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
                 OR
+
+            <div className="relative flex justify-center text-sm w-full">
+
+              <span className="bg-slate-50 dark:bg-slate-800 px-4 text-xs font-semibold tracking-wider uppercase text-slate-500">
+                Or continue with
               </span>
             </div>
           </div>
 
           <div className="mt-6 flex justify-center list-none w-full">
+          {/* Social Identity OAuth Block Container */}          <div className="flex justify-center w-full box-border">
             <GoogleLogin
               onSuccess={handleGoogleLoginSuccess}
               onError={handleGoogleLoginError}
@@ -217,6 +225,8 @@ const LoginComponent = () => {
 
           <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
             Don&apos;t have an account?{" "}
+          <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400 font-medium">
+            Don't have an account?{" "}
             <Link
               to="/signup"
               className="font-semibold text-blue-400 hover:text-blue-300 transition-colors duration-200"
