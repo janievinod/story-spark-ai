@@ -81,7 +81,7 @@ const FooterComponent: React.FC = () => {
 
   const socialLinks = [
     { icon: "fa-linkedin", url: "https://www.linkedin.com/in/ronisarkar76/", label: "Connect with us on LinkedIn" },
-    { icon: "fa-twitter", url: "https://x.com/ronisarkar_exe", label: "Follow us on X (Twitter)" },
+    { icon: "fa-x-twitter", url: "https://x.com/ronisarkar_exe", label: "Follow us on X" },
     { icon: "fa-github", url: "https://github.com/ronisarkarexe", label: "Check out GitHub" },
     { icon: "fa-envelope", url: "mailto:ronichandrasarkar@gmail.com", label: "Email us" },
   ];
@@ -222,7 +222,7 @@ const FooterComponent: React.FC = () => {
                     )}
                     <span className="capitalize">
                       {item.icon === "fa-x-twitter"
-                        ? "X (Twitter)"
+                        ? "X"
                         : item.icon.replace("fa-", "")}
                     </span>
                   </a>
