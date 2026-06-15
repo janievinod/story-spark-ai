@@ -16,6 +16,15 @@ import matplotlib.pyplot as plt
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
+import tensorflow as tf
+
+# Set random seeds for reproducible training results
+SEED = 42
+
+random.seed(SEED)
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
+
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from scorer import build_model, MAX_VOCAB, MAX_LEN, SAVE_DIR
@@ -190,9 +199,10 @@ if __name__ == "__main__":
 
     # ── Evaluation plot ────────────────────────────────────────────────────────
     
+
     pred_coh, pred_cre, pred_rel = model.predict(
         {"story": val_story_enc, "prompt": val_prompt_enc}, verbose=0
-    )
+
 
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
@@ -203,11 +213,14 @@ if __name__ == "__main__":
         ["Coherence", "Creativity", "Relevance"]
     ):
         ax.scatter(true, pred.flatten(), alpha=0.5, s=10)
+
         ax.plot([0, 1], [0, 1], 'r--')
+
         ax.set_xlabel("True")
         ax.set_ylabel("Predicted")
         ax.set_title(title)
 
     plt.tight_layout()
     plt.savefig("scorer_eval.png")
+
     print("scorer_eval.png saved!")
