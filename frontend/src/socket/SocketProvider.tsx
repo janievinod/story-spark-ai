@@ -1,8 +1,7 @@
-import React, { createContext, useContext, useEffect, useRef } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Socket } from "socket.io-client";
-import { connectSocket, socketIo } from "./socket.oi";
+import { connectSocket, disconnectSocket } from "./socket.oi";
 import { isLoggedIn } from "../services/auth.service";
-import { AUTH_KEY } from "../constants/storage-key";
 
 /**
  * SocketContext provides a stable reference to the singleton Socket.IO client.
@@ -18,48 +17,26 @@ export const useSocket = (): Socket | null => useContext(SocketContext);
 export const SocketProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const isConnected = useRef(false);
+  const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
     const authed = isLoggedIn();
     if (!authed) {
-      // If the user is not authenticated, ensure the socket is disconnected
-      if (isConnected.current && socketIo) {
-        socketIo.disconnect();
-        isConnected.current = false;
-      }
+      disconnectSocket();
+      setSocket(null);
       return;
     }
 
-    connectSocket();
-    if (socketIo && !socketIo.connected) {
-      socketIo.connect();
-    }
-    if (socketIo) {
-      socketIo.auth = { token: localStorage.getItem(AUTH_KEY) || "" };
-    }
-
-    const handleTokenRefresh = (event: Event) => {
-      const customEvent = event as CustomEvent<{ token: string }>;
-      const newToken = customEvent.detail?.token;
-      if (newToken && socketIo && socketIo.connected) {
-        (socketIo as any).auth = { token: newToken };
-        socketIo.emit("reauthenticate", newToken);
-      }
-    };
-
-    window.addEventListener("story-spark-token-refreshed", handleTokenRefresh);
+    const s = connectSocket();
+    setSocket(s);
 
     return () => {
-      window.removeEventListener("story-spark-token-refreshed", handleTokenRefresh);
-      if (socketIo) {
-        socketIo.disconnect();
-      }
-      isConnected.current = false;
+      disconnectSocket();
+      setSocket(null);
     };
   }, []);
 
   return (
-    <SocketContext.Provider value={socketIo}>{children}</SocketContext.Provider>
+    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );
 };
