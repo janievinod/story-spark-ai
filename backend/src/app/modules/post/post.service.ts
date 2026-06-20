@@ -356,8 +356,12 @@ const doFeaturedPosts = async (postId: string) => {
   }
 };
 
-const getSinglePost = async (id: string) => {
-  const postById = await Post.findOne({ _id: id, isDeleted: { $ne: true } })
+const getSinglePost = async (id: string, token?: ITokenPayload | null) => {
+  const postById = await Post.findOneAndUpdate(
+    { _id: id, isDeleted: { $ne: true } },
+    { $inc: { viewsCount: 1 } },
+    { new: true }
+  )
     .populate("author", "name email createdAt")
     .populate({
       path: "reactions",
@@ -367,10 +371,23 @@ const getSinglePost = async (id: string) => {
   if (!postById) {
     throw new ApiError(httpStatus.NOT_FOUND, "Post not found!");
   }
+  if (token) {
+    await User.findByIdAndUpdate(token._id, {
+      $pull: { readingHistory: id }
+    });
+    await User.findByIdAndUpdate(token._id, {
+      $push: {
+        readingHistory: {
+          $each: [id],
+          $slice: -500
+        }
+      }
+    });
+  }
   return postById;
 };
 
-const getPostsByTag = async (tag: string, excludeId?: string) => {
+const getPostsByTag = async (tag: string, excludeId?: string, limit: number = 10) => {
   if (!tag) {
     return [];
   }
@@ -380,7 +397,7 @@ const getPostsByTag = async (tag: string, excludeId?: string) => {
     query._id = { $ne: excludeId };
   }
   const result = await Post.find(query)
-    .limit(2)
+    .limit(Math.min(limit, 50))
     .populate("author", "name email createdAt")
     .populate({
       path: "reactions",

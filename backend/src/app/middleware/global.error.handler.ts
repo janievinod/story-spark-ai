@@ -58,15 +58,20 @@ const globalErrorHandler: ErrorRequestHandler = (
         ]
       : [];
   } else if (err instanceof Error) {
+    if ("statusCode" in err) {
+      statusCode = (err as any).statusCode;
+    } else if ("status" in err) {
+      statusCode = (err as any).status;
+    }
     message = err.message;
-    errorMessages = err?.message 
+    errorMessages = (err as any).errorMessages || (err?.message 
       ? [
           {
             path: "",
             message: err.message,
           },
         ]
-      : [];
+      : []);
   }
 
   res.status(statusCode).json({
