@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, 'backend', 'src', 'app', 'modules', 'ai_model', 'ai_model.utils.ts');
+cconst filePath = path.join(__dirname, 'ai_model.utils.ts');
 let content = fs.readFileSync(filePath, 'utf8');
 
 // Replace the truncated structure with a complete try-catch block
